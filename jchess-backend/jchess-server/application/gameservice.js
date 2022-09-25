@@ -1,4 +1,5 @@
 const shortid = require('shortid');
+const { buildBadMethodResponse, buildOkMethodResponse } = require('../utils/apphelper');
 const { appLogger } = require('../utils/logging');
 const { getRedisClient } = require('./redis');
 
@@ -27,19 +28,19 @@ const addNewMove = async (newMoveData) => {
     const gameData = JSON.parse(gameDataRaw)
     if (gameData.winner !== null) {
         appLogger.error("game already over! no more moves to make!");
-        return null
+        return buildBadMethodResponse("game already over")
     }
     const newMoveCoordinateKey = constructCoordinatesKey(newMoveData.positionX, newMoveData.positionY);
     if (gameData.moves[newMoveCoordinateKey] !== undefined) {
         appLogger.error("position taken!");
-        return null
+        return buildBadMethodResponse("position taken")
     }
     if (Object.keys(gameData.moves).length % 2 === 0 && newMoveData.moveBy !== "home") {
         appLogger.error("wrong turn! turn is even number but move-author is not home!");
-        return null
+        return buildBadMethodResponse("wrong turn")
     } else if (Object.keys(gameData.moves).length % 2 === 1 && newMoveData.moveBy !== "away") {
         appLogger.error("wrong turn! turn is odd number but move-author is not away!")
-        return null
+        return buildBadMethodResponse("wrong turn")
     }
     var data = {}
     Object.keys(gameData.moves).forEach(key => {
@@ -62,7 +63,7 @@ const addNewMove = async (newMoveData) => {
     }
     const calculatedNewGameDataDraft = calculateWinner(newGameDataDraft, newMoveData)
     await redisClient.set(gameDataKey, JSON.stringify(calculatedNewGameDataDraft))
-    return calculatedNewGameDataDraft;
+    return buildOkMethodResponse(calculatedNewGameDataDraft);
 }
 
 const calculateWinner = (newGameDataDraft, newMoveData) => {

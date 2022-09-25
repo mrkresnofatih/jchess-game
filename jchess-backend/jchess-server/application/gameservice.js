@@ -21,11 +21,10 @@ const createNewGame = async () => {
 
 const addNewMove = async (newMoveData) => {
     const redisClient = await getRedisClient();
-    appLogger.info(newMoveData)
+    appLogger.info("new-move-data received!")
     const gameDataKey = `gamedata-${newMoveData.gameId}`
     const gameDataRaw = await redisClient.get(gameDataKey);
     const gameData = JSON.parse(gameDataRaw)
-    console.log(gameData)
     if (gameData.winner !== null) {
         appLogger.error("game already over! no more moves to make!");
         return null

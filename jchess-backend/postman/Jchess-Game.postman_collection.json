@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"gameId\": \"G9WnRblL7\",\r\n\t\"moveBy\": \"home\",\r\n\t\"positionX\": 15,\r\n\t\"positionY\": 11\r\n}",
+					"raw": "{\r\n\t\"gameId\": \"uZ4LWUoa8\",\r\n\t\"moveBy\": \"home\",\r\n\t\"positionX\": 19,\r\n\t\"positionY\": 30\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

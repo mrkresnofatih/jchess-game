@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "5616840a-bf6f-493e-9001-04144b0eb957",
+		"name": "Jchess-Game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13142924"
+	},
+	"item": [
+		{
+			"name": "NewGame",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/game/new-game",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"game",
+						"new-game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NewMove",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"gameId\": \"G9WnRblL7\",\r\n\t\"moveBy\": \"home\",\r\n\t\"positionX\": 15,\r\n\t\"positionY\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/game/new-move",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"game",
+						"new-move"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

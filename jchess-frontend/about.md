@@ -1,0 +1,1 @@
+This is the frontend app of jchess. Not created yet

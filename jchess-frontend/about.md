@@ -1,1 +1,1 @@
-This is the frontend app of jchess. Not created yet
+This is the frontend app of jchess. currently there's only the react front-end implementation

@@ -6,6 +6,7 @@ import SideBarBody from '../components/templates/SideBarBody'
 import PageButton from '../components/widgets/PageButton'
 import PageHeader from '../components/widgets/PageHeader'
 import { themeColorPalette } from '../constants/colors'
+import { useGameLastThreeMovesSelector, useGameMovesMadeCountSelector, useGameNextMoverSelector, useGameWinnerSelector } from '../redux/gameSelectors'
 import { useSystemThemeSelector } from '../redux/systemSelectors'
 
 const Game = () => {
@@ -14,7 +15,6 @@ const Game = () => {
         onClick={() => console.log("new game!")}
     />
     const pageHeaderComp = <PageHeader button={pageHeaderButton} />
-    const sidebarContent = <div>content</div>
 
     const systemTheme = useSystemThemeSelector()
 
@@ -36,8 +36,41 @@ const Game = () => {
         `,
         relativePosition: css`
             position: relative;
+        `,
+        sidebarTitle: css`
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: ${themeColorPalette[systemTheme]["color-6"]};
+        `,
+        sidebarStatline: css`
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: ${themeColorPalette[systemTheme]["color-6"]};
+        `,
+        sidebarMoveline: css`
+            font-size: 16px;
+            margin-left: 16px;
         `
     }
+
+    const turnToMove = useGameNextMoverSelector()
+    const totalMovesMade = useGameMovesMadeCountSelector()
+    const lastThreeMoves = useGameLastThreeMovesSelector()
+    console.log(lastThreeMoves)
+    const winner = useGameWinnerSelector()
+    const sidebarContent = <div>
+        <h2 className={styles.sidebarTitle}>GameStats</h2>
+        {winner !== null ? (<p className={styles.sidebarStatline}>Winner: {winner}</p>) : (
+            <p className={styles.sidebarStatline}>Turn-To-Move: {turnToMove}</p>
+        )}
+        <p className={styles.sidebarStatline}>Total-Moves-Made: {totalMovesMade}</p>
+        {lastThreeMoves.length > 0 && <>
+            <p className={styles.sidebarStatline}>Last-3-Moves-Made:</p>
+            {lastThreeMoves.map((move, index) => (
+                <p key={index} className={styles.sidebarMoveline}>{`--> ${move.positionX}-${move.positionY} (${move.moveBy})`}</p>
+            ))}
+        </>}
+    </div>
     
     const GameBoard = () => {
         return (

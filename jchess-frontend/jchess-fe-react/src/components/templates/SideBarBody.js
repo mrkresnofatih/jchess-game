@@ -15,7 +15,7 @@ const SideBarBody = ({children, sidebarContent}) => {
         sidebarContainer: css`
             display: flex;
             width: 350px;
-            padding: 16px;
+            padding: 20px;
             flex-direction: column;
             background-color: ${themeColorPalette[systemTheme]["color-3"]};
         `,

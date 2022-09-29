@@ -1,6 +1,7 @@
 import { css, cx } from '@emotion/css'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { APIGetNewGame } from '../api/getNewGame'
 import CenterBody from '../components/templates/CenterBody'
 import Page from '../components/templates/Page'
 import PageButton from '../components/widgets/PageButton'
@@ -12,7 +13,7 @@ import { setPage } from '../redux/systemSlice'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const goToGamePageAction = () => dispatch(setPage(pageNames.GAME))
+    const goToNewGameAction = () => APIGetNewGame(() => dispatch(setPage(pageNames.GAME)))
 
     const systemTheme = useSystemThemeSelector()
 
@@ -34,7 +35,7 @@ const Home = () => {
 
     const pageHeaderButton = <PageButton 
         text={'Play Now!'} 
-        onClick={goToGamePageAction} 
+        onClick={goToNewGameAction} 
     />
     const pageHeaderComp = <PageHeader button={pageHeaderButton}/>
     const pageBodyContent = <CenterBody>

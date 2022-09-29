@@ -14,3 +14,5 @@ export const useGameLastThreeMovesSelector = () => useSelector((state) =>
     )
 
 export const useGameWinnerSelector = () => useSelector((state) => state.game.winner)
+
+export const useGameMovesSelector = () => useSelector((state) => state.game.moves)

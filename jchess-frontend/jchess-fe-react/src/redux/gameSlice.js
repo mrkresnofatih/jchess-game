@@ -13,7 +13,7 @@ const gameSlice = createSlice({
             state.gameId = gameId;
             state.moves = moves;
             state.winner = winner;
-            console.log("INIT_NEW_GAME Called!")
+            console.log("SET_GAME Called!")
         }
     }
 })

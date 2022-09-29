@@ -16,6 +16,6 @@ export const APIGetNewGame = (callback) => {
         }));
         callback();
     }).catch((response) => {
-        console.log(`API_FAIL: ${apiUrl} | Data: ${JSON.stringify(response.response.data)}`)
+        console.log("API FAIL: " + response)
     })
 }

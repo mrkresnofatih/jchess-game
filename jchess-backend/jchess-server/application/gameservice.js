@@ -83,16 +83,18 @@ const calculateWinner = (newGameDataDraft, newMoveData) => {
             } else {
                 if(newGameDataDraft.moves[key].moveBy === newMoveData.moveBy) {
                     count++
+                    if (count >= 5) {
+                        appLogger.info(`Game won by ${newMoveData.moveBy}!`)
+                        return {
+                            ...newGameDataDraft,
+                            winner: newMoveData.moveBy
+                        }
+                    }
                 } else {
                     count = 0
                 }
-            }
-        }
 
-        if (count >= 5) {
-            return {
-                ...newGameDataDraft,
-                winner: newMoveData.moveBy
+                appLogger.info(key + " " + newMoveData.moveBy + " " + count)
             }
         }
 
@@ -106,16 +108,16 @@ const calculateWinner = (newGameDataDraft, newMoveData) => {
             } else {
                 if(newGameDataDraft.moves[key].moveBy === newMoveData.moveBy) {
                     count++
+                    if (count >= 5) {
+                        appLogger.info(`Game won by ${newMoveData.moveBy}!`)
+                        return {
+                            ...newGameDataDraft,
+                            winner: newMoveData.moveBy
+                        }
+                    }
                 } else {
                     count = 0
                 }
-            }
-        }
-
-        if (count >= 5) {
-            return {
-                ...newGameDataDraft,
-                winner: newMoveData.moveBy
             }
         }
 
@@ -129,16 +131,16 @@ const calculateWinner = (newGameDataDraft, newMoveData) => {
             } else {
                 if(newGameDataDraft.moves[key].moveBy === newMoveData.moveBy) {
                     count++
+                    if (count >= 5) {
+                        appLogger.info(`Game won by ${newMoveData.moveBy}!`)
+                        return {
+                            ...newGameDataDraft,
+                            winner: newMoveData.moveBy
+                        }
+                    }
                 } else {
                     count = 0
                 }
-            }
-        }
-
-        if (count >= 5) {
-            return {
-                ...newGameDataDraft,
-                winner: newMoveData.moveBy
             }
         }
 
@@ -152,16 +154,16 @@ const calculateWinner = (newGameDataDraft, newMoveData) => {
             } else {
                 if(newGameDataDraft.moves[key].moveBy === newMoveData.moveBy) {
                     count++
+                    if (count >= 5) {
+                        appLogger.info(`Game won by ${newMoveData.moveBy}!`)
+                        return {
+                            ...newGameDataDraft,
+                            winner: newMoveData.moveBy
+                        }
+                    }
                 } else {
                     count = 0
                 }
-            }
-        }
-
-        if (count >= 5) {
-            return {
-                ...newGameDataDraft,
-                winner: newMoveData.moveBy
             }
         }
 

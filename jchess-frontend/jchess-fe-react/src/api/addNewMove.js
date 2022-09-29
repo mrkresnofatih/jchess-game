@@ -27,7 +27,7 @@ export const APIAddNewMove = (posX, posY) => {
         }));
         store.dispatch(hideLoadingModal())
         if (response.data.data.winner !== null) {
-            store.dispatch(viewSuccessModal(response.data.data.winner + "WON!"))
+            store.dispatch(viewSuccessModal(response.data.data.winner + " WON!"))
         }
     }).catch((response) => {
         console.log(`API_FAIL: ${apiUrl} | Data: ${JSON.stringify(response.response.data)}`)
